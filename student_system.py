@@ -1,10 +1,11 @@
 class Student:
-    def __init__(self, name, age, python_marks, numpy_marks, pandas_marks):
+    def __init__(self, student_id, name, age, python_marks, numpy_marks, pandas_marks):
         self.name = name
         self.age = age
         self.python_marks = python_marks
         self.numpy_marks = numpy_marks
         self.pandas_marks = pandas_marks
+        self.student_id = student_id
 
     def total(self):
         return self.python_marks + self.numpy_marks + self.pandas_marks
@@ -19,8 +20,22 @@ class Student:
             return "Fail"
 
 
-def add_student():
+def add_student(students):
+    while True:
 
+         student_id = input("Enter student ID: ")
+
+         found = False
+
+         for student in students:
+             if student.student_id == student_id:
+                 found = True
+                 break
+         if found:
+              print("Student Id already exists ")
+         else:
+              break
+    
     # Student name validation
     while True:
         name = input("Enter student name: ")
@@ -88,6 +103,7 @@ def add_student():
 
     # Student object
     student = Student(
+        student_id,
         name,
         age,
         python_marks,
@@ -105,8 +121,9 @@ def view_students(students):
         return
 
     print("Total students: ",len(students))
-    
+
     for student in students:
+        print("student_id: ", student.student_id)
         print("Name:", student.name)
         print("Age:", student.age)
         print("Total:", student.total())
@@ -128,7 +145,7 @@ def main():
         choice = input("Enter Your Choice: ")
 
         if choice == "1":
-            student = add_student()
+            student = add_student(students)
             students.append(student)
         elif choice == "2":
             view_students(students)
