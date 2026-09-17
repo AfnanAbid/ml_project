@@ -104,6 +104,8 @@ def view_students(students):
         print("Student not found. ")
         return
 
+    print("Total students: ",len(students))
+    
     for student in students:
         print("Name:", student.name)
         print("Age:", student.age)
