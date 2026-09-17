@@ -100,6 +100,10 @@ def add_student():
 
 def view_students(students):
 
+    if not students:
+        print("Student not found. ")
+        return
+
     for student in students:
         print("Name:", student.name)
         print("Age:", student.age)
