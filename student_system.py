@@ -98,21 +98,6 @@ def add_student():
     return student
 
 
-def ask_yes_no():
-
-    while True:
-        choice = input("Add another student? (yes/no): ").lower()
-
-        if choice == "yes":
-            return True
-
-        elif choice == "no":
-            return False
-
-        else:
-            print("Please enter yes or no")
-
-
 def view_students(students):
 
     for student in students:
@@ -129,13 +114,24 @@ def main():
     students = []
 
     while True:
-        student = add_student()
-        students.append(student)
+        print("\n======Student Management System ======")
+        print("1. Add student")
+        print("2. View Students")
+        print("3. Exit")
 
-        if not ask_yes_no():
+        choice = input("Enter Your Choice: ")
+
+        if choice == "1":
+            student = add_student()
+            students.append(student)
+        elif choice == "2":
+            view_students(students)
+        elif choice == "3":
+            print("Program exited...")
             break
 
-    view_students(students)
-
+        else:
+            print("please enter a valid choice ")
+        
 
 main()
